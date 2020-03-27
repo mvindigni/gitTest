@@ -2,4 +2,5 @@
 def double(x):
     print(x * 2)
 
-double(5)
+num = int(input("Enter the number you want doubled: "))
+double(num)

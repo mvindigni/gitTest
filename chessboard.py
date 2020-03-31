@@ -1,11 +1,15 @@
 import numpy as np
 
 def create_board():
-    board = np.zeros((8,8))
+    board = [[0 for y in range(8)] for x in range(8)]
     return board
 
+def print_board(board):
+    for x in range(8):
+        print(board[x])
+
 board = create_board()
-print(board)
+print_board(board)
 
 is_running = False
 
@@ -21,3 +25,9 @@ class Rook:
     def checkMove(self):
         pass
         #Need to take the initial position in form [x][y] then check to see if move is in either [x][0-8] or [0-8][y], if so, return true, if not, return false -> don't worry about pieces blocking way for now??
+
+class Pawn:
+    def __init__(self, currentPosition):
+        self.currentPosition = currentPosition
+    def checkMove(self):
+        pass

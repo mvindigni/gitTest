@@ -14,12 +14,11 @@ def print_board(board):
         print(board[x])
 
 # calculates movements needed for piece to make move
-def calc_move(piece, move):
+def calc_move(currentPosition, dest):
     move = []
     for x in range(2):
-        move.append(piece.currentPosition[x] - move[x])
+        move.append(currentPosition[x] - dest[x])
     return(move)
-
 
 # -----------------------------------------------------------
 # RUN GAME
@@ -38,9 +37,39 @@ class Rook:
         self.currentPosition = currentPosition
 
     # check if move is possible using calc_move
-    def checkMove(move):
-        check = calc_move(self, move)
-        print(check)
+    def checkMove(self, move):
+        currentPosition = self.currentPosition
+        check = calc_move(currentPosition, move)
+        print("--------------------------------------------")
+        print("currentpos: " + str(self.currentPosition))
+        print("move dest: " + str(move))
+
+        # if rook is moving along the y-axis
+        if check[0] == 0:
+            # if move dest is the same as currentPosition
+            if check[1] == 0:
+                print("invalid move: can't move in place")
+            # check for out-of-bounds move
+            else:
+                if (move[1] > 8 or move[1] < 0):
+                    print("invalid move: move out of bounds")
+                # valid move
+                else:
+                    self.currentPosition[1] = move[1]
+                    print("new position: " + str(self.currentPosition))
+        # if rook is moving along the x-axis
+        if check[1] == 0:
+
+            # check for out-of-bounds move
+                if (move[0] > 8 or move[0] < 0):
+                    print("invalid move: move out of bounds")
+
+                else:
+                    self.currentPosition[0] = move[0]
+                    print("new position: " + str(self.currentPosition))
+
+        if(check[0]!= 0 and check[1]!= 0):
+            print("invalid move: can only move along one axis at a time")
 
 # class Pawn:
     # initialize a pawn
@@ -56,10 +85,13 @@ class Rook:
 # TESTING / WIP
 # -----------------------------------------------------------
 
-wrook1 = Rook([0, 0])
-print (wrook1.currentPosition)
-
-for x in range(2):
-    list_diff.append(list1[x] - list2[x])
-
-print(list_diff)
+rook = Rook([0,0])
+rook.checkMove([3,0])
+rook.checkMove([0,0])
+rook.checkMove([0,3])
+rook.checkMove([0,0])
+rook.checkMove([1,1])
+rook.checkMove([0,9])
+rook.checkMove([0,-1])
+rook.checkMove([9,0])
+rook.checkMove([-1,0])

@@ -1,33 +1,65 @@
 import numpy as np
 
+# --------------------------------------------------------
+# HELPER FUNCTIONS
+# --------------------------------------------------------
+# creates board
 def create_board():
     board = [[0 for y in range(8)] for x in range(8)]
     return board
 
+# prints board in 8x8 array
 def print_board(board):
     for x in range(8):
         print(board[x])
 
-board = create_board()
-print_board(board)
+# calculates movements needed for piece to make move
+def calc_move(piece, move):
+    move = []
+    for x in range(2):
+        move.append(piece.currentPosition[x] - move[x])
+    return(move)
 
+
+# -----------------------------------------------------------
+# RUN GAME
+# -----------------------------------------------------------
 is_running = False
 
 while is_running == True:
      print("wip")
 
-#Create classes for each piece (pawn, rook, bishop, knight, king) and then have two child classes for each piece to seperate them between white and black?
-#No need for queen class since you can simply combine rook and bishop (?), can you have a child class that inherits from two different classes?
-
+# ---------------------------------------------------------
+# CLASSES
+# ---------------------------------------------------------
 class Rook:
+    # initialize a rook
     def __init__(self, currentPosition):
         self.currentPosition = currentPosition
-    def checkMove(self):
-        pass
-        #Need to take the initial position in form [x][y] then check to see if move is in either [x][0-8] or [0-8][y], if so, return true, if not, return false -> don't worry about pieces blocking way for now??
 
-class Pawn:
-    def __init__(self, currentPosition):
-        self.currentPosition = currentPosition
-    def checkMove(self):
-        pass
+    # check if move is possible using calc_move
+    def checkMove(move):
+        check = calc_move(self, move)
+        print(check)
+
+# class Pawn:
+    # initialize a pawn
+#     def __init__(self, currentPosition):
+#         self.currentPosition = currentPosition
+#
+    # check if move is possible using calc_move
+#     def checkMove(self):
+#         pass
+
+
+# -----------------------------------------------------------
+# TESTING / WIP
+# -----------------------------------------------------------
+
+wrook1 = Rook([0, 0])
+print (wrook1.currentPosition)
+
+for x in range(2):
+    list_diff.append(list1[x] - list2[x])
+
+print(list_diff)

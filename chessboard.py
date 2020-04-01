@@ -20,6 +20,10 @@ def calc_move(currentPosition, dest):
         move.append(currentPosition[x] - dest[x])
     return(move)
 
+def test():
+    print("test")
+
+
 # -----------------------------------------------------------
 # RUN GAME
 # -----------------------------------------------------------
